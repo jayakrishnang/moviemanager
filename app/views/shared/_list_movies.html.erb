@@ -1,0 +1,26 @@
+<div class="text-center">
+    <div class="container">
+      <div class="row">
+        <% @movies.each do |movie| %>
+          <div class="col-md-3">
+            <div class="wow fadeInLeft" data-wow-delay="0.2s">
+              <div class="service-box">
+                <div class="service-icon">
+                  <span class="fa fa-cogs fa-5x">
+                    <%= image_tag "#{movie.poster || 'not_found-full.png'}", style:'max-width:150px;max-height:150px;' %>
+                  </span> 
+                </div>
+                <div class="service-desc">         
+                  <h5><%=movie.title%></h5>
+                  <p>
+                    <%=movie.year%>
+                  </p>
+                  <%= link_to "OPEN", movie_path(movie), :class => 'btn btn-skin' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>   
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MovieManager</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="navigation">
+  <nav class="navbar navbar-custom" role="navigation">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="site-logo">
+            <%=image_tag "mdb_logo.jpg", width:'20%', style: 'margin-top: -10px;'%>
+            <%= link_to "MOVIEMANAGER", movies_path, :class => 'brand' %>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+              <i class="fa fa-bars"></i>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><%= link_to "HOME", movies_path %></li>
+              <li><%= link_to "YEARS", list_years_movies_path %></li>
+              <li><%= link_to "COLLECTIONS", franchises_path %></li>
+              <li><%= link_to "GENRES", genres_path %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %> alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= value %>
+  </div>
+<% end %>
+<%= yield %>
+</body>
+</html>

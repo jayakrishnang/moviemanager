@@ -1,0 +1,5 @@
+<% @years.each do |year| %>
+	<div class="col-md-3">
+		<h3 align="center"><%= link_to year, list_movies_by_year_movies_path({year: year}), :class => 'btn btn-skin' %></h2>
+	</div>
+<% end %>

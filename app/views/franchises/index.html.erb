@@ -1,0 +1,5 @@
+<% @franchises.each do |franchise| %>
+	<div class="col-md-3">
+		<h3 align="center"><%= link_to franchise.name, franchise_path(franchise), :class => 'btn btn-skin' %></h2>
+	</div>
+<% end %>
