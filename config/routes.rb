@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'movies/index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -18,8 +19,12 @@ Rails.application.routes.draw do
     resources :movies do
       get :list_years, :on => :collection
       get :list_movies_by_year, :on => :collection
+      get :recommended_movies, :on => :collection
+      get :unwatched_movies, :on => :collection
+      get :recommended_unwatched_movies, :on => :collection
       get :open_movie_folder
       get :play_movie
+      get :toggle_marked_status, :on => :collection
       get :download_movie_file, :on => :collection
     end
     resources :genres

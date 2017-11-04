@@ -48,7 +48,7 @@ class MovieDatabaseAssistant
 	end
 
 	def find_file_name(movie)
-		files = Dir.glob "#{movie}*"
+		files = Dir.glob "#{movie.gsub('[', '\[')}*"
 		movie_file_name = nil
 		files.each do |file|
 			MOVIE_EXTENSIONS.each do |extension|

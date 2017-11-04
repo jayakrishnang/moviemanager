@@ -11,6 +11,7 @@
       </div>
     </div>
   </div>
+  <%= hidden_field_tag :movie_id, @movie.id %>
   <div class="container">
     <div class="row">
       <div class="col-md-4">
@@ -38,6 +39,10 @@
           <%= link_to "OPEN FOLDER", movie_open_movie_folder_path(@movie), :class => 'btn btn-red' %>
           <%= link_to "PLAY MOVIE", movie_play_movie_path(@movie), remote: true, :class => 'btn btn-red' %>
           <%= link_to "DOWNLOAD", download_movie_file_movies_path({movie_id: @movie.id}), :class => 'btn btn-red', target: "_blank" %>
+          <% if current_user.present? %>
+            <%= button_tag movie_toggle_watch_link(@movie), onclick: "toggleWatchStatus(#{@movie.id})",
+                  id: "watch_button_#{@movie.id}", :class => "btn #{watch_button_class(@movie)}" %>
+          <% end %>
         </div>
       </div>
     </div>    

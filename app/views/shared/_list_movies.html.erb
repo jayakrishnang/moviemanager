@@ -1,13 +1,20 @@
 <div class="text-center">
     <div class="container">
       <div class="row">
+        <div class="filters">
+          <%= link_to "RECOMMENDED MOVIES", recommended_movies_movies_path, class: 'btn btn-basic' %>
+          <%= link_to "UNWATCHED MOVIES", unwatched_movies_movies_path, class: 'btn btn-basic' %>
+          <%= link_to "RECOMMENDED UNWATCHED MOVIES", recommended_unwatched_movies_movies_path, class: 'btn btn-basic' %>
+        </div>
         <% @movies.each do |movie| %>
           <div class="col-md-3">
             <div class="wow fadeInLeft" data-wow-delay="0.2s">
               <div class="service-box">
                 <div class="service-icon">
                   <span class="fa fa-cogs fa-5x">
-                    <%= image_tag "#{movie.poster || 'not_found-full.png'}", style:'max-width:150px;max-height:150px;' %>
+                    <%= link_to movie_path(movie), :class => 'btn btn-skin' do %>
+                      <%= image_tag "#{movie.poster || 'not_found-full.png'}", class: "img-thumbnail movie-thumb-image #{seen_label(movie)}" %>
+                    <% end %>
                   </span> 
                 </div>
                 <div class="service-desc">         
@@ -16,6 +23,8 @@
                     <%=movie.year%>
                   </p>
                   <%= link_to "OPEN", movie_path(movie), :class => 'btn btn-skin' %>
+                  <%= button_tag movie_toggle_watch_link(movie), onclick: "toggleWatchStatus(#{movie.id})",
+                        id: "watch_button_#{movie.id}",:class => "btn #{watch_button_class(movie)}" %>
                 </div>
               </div>
             </div>
