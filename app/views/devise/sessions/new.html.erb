@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row main">
+    <div class="main-login main-center">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <div class="field">
+                <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <div class="field">
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+
+        <div class="form-group ">
+          <div class="actions">
+            <%= f.submit "Log In", class: "btn btn-primary btn-lg btn-block login-button" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="login-register">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
