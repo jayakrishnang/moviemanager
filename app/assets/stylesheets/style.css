@@ -587,7 +587,7 @@ section#intro {
 .service-box {
 	background: #fff;
 	border: 1px solid #f7f7f7;
-	padding: 20px;
+	padding-top: 20px;
 	height: 450px;
 }
 
@@ -940,6 +940,10 @@ a.btn:focus{
   background-image: none;
 }
 
+.btn-success {
+  color: #000000;
+}
+
 
 .btn-skin:hover,
 .btn-skin:focus,
@@ -1082,4 +1086,20 @@ a.btn:focus{
 
 .bottom-space{
 	padding-bottom: 10px;
+}
+
+.movie-thumb {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    background-position: center;
+    background: #444;
+    margin: 0 auto;
+}
+.movie-thumb-image {
+    max-width:150px;
+    max-height:150px;
+}
+.seen {
+	opacity: 0.5;
 }
